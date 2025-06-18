@@ -6,6 +6,7 @@ struct EMP{
     string nom;
     float ven[12];
     float sal;
+    float t_ven;
 };
 int main(){
     EMP EMPLEADOS[100];
@@ -18,11 +19,15 @@ int main(){
         cout<<"Ingresa el nombre de empleado: ";
         cin>>EMPLEADOS[i].nom;
         cout<<"Ingresa el las ventas de empleado: ";
+        EMPLEADOS[i].t_ven=0;
         for(j=0;j<12;j++){
-            cin>>EMPLEADOS[i].ven[j];
+            cin>>EMPLEADOS[i].ven[j]; //registra la cantidad de ventas por mes
+            EMPLEADOS[i].t_ven += EMPLEADOS[i].ven[j]; //suma el total de ventas al año por cada empleado
         }
-        cin>>EMPLEADOS[i].sal;
+        cout<<"Ingresa el salario del empleado\n";
+        cin>>EMPLEADOS[i].sal;        
     }
+    
 
     /*
     for (i=0;i<n;i++){

@@ -12,7 +12,7 @@ struct EMP{
 int main(){
     EMP EMPLEADOS[100];
     int n,i,j;
-    int max(0);//indicador de mayor ventas de ventas
+    int max(0);//indicador de mayor ventas 
     const float bono=1.1;
     cout<<"Ingresa el numero de empleados a ingresar: \n";
     cin>>n;
@@ -21,7 +21,7 @@ int main(){
         cin>>EMPLEADOS[i].num;
         cout<<"Ingresa el nombre de empleado: ";
         cin>>EMPLEADOS[i].nom;
-        cout<<"Ingresa el las ventas de empleado: ";
+        cout<<"Ingresa las ventas de empleado: ";
         EMPLEADOS[i].t_ven=0;
         for(j=0;j<3;j++){
             cin>>EMPLEADOS[i].ven[j]; //registra la cantidad de ventas por mes
@@ -53,6 +53,13 @@ int main(){
 
         if(EMPLEADOS[i].t_ven>100){
             EMPLEADOS[i].sal *= bono;
+        }
+    }
+
+    cout<<"Vendedores con menos de 30 ventas:\n";
+    for(i=0;i<n;i++){
+        if(EMPLEADOS[i].t_ven<30){
+            cout<<EMPLEADOS[i].nom<<endl;
         }
     }
     

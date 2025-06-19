@@ -7,11 +7,13 @@ struct EMP{
     float ven[12];
     float sal;
     float t_ven; //venta total anual
+    float bono;
 };
 int main(){
     EMP EMPLEADOS[100];
     int n,i,j;
     int max(0);//indicador de mayor ventas de ventas
+    const float bono=1.1;
     cout<<"Ingresa el numero de empleados a ingresar: \n";
     cin>>n;
     for (i=0;i<n;i++){
@@ -34,7 +36,7 @@ int main(){
             max=i+1;
         }
     }
-    
+        
     /*//  Esta seccion es solo para pruebas
     for (i=0;i<n;i++){
         cout<<"Empleado "<<i;
@@ -44,9 +46,15 @@ int main(){
         cout<<EMPLEADOS[i].sal<<endl;
     }
     */
-    
     cout<<"El empleado con mas ventas es: "<<EMPLEADOS[max].nom<<" \n";
     cout<<"Ventas totales: "<<EMPLEADOS[max].t_ven<<" \n";
+    //bono para los que tuvieron mas de 100 ventas durante el año
+    for(i=0;i<n;i++){        
 
+        if(EMPLEADOS[i].t_ven>100){
+            EMPLEADOS[i].sal *= bono;
+        }
+    }
+    
     return 0;
 }

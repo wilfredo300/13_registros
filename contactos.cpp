@@ -20,7 +20,7 @@ void imprimeContacto(contactoEmail &);
 int main(){
     int n, op,id;
     string nom, user, domain;
-    char sex,val, op3;
+    char sex,val, op3,op5;
     int edad;
     correo email;
     contactoEmail cont, lista[100], busqueda;
@@ -32,6 +32,7 @@ int main(){
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Buscar y/o editar contacto"<<endl;
         cout<<"4. Mostrar contactos por dominio"<<endl;
+        cout<<"5. Eliminar contacto"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Elige una opcion: "; cin>>op;
         switch(op){
@@ -64,7 +65,7 @@ int main(){
                 break;
             case 2:
                 for(int i = 0; i < n; i++){
-                    cout<<"Contacto #"<<i<<endl;
+                    cout<<"-------------Contacto #--------------"<<i<<endl;
                     imprimeContacto(lista[i]);
                     cout<<endl;
                 }
@@ -128,7 +129,19 @@ int main(){
                     cout<<"No hay correos con otros dominios"<<endl;
                 }
             }
-            system("pause");
+                system("pause");
+                break;
+            case 5:
+                cout<<"Ingrese el id# del contacto que vas a eliminar: "; cin>>id;
+                cout<<"Estas seguro que quieres eliminar a "<<lista[id].nom<<" de la lista de contactos? (s/n)"; cin>>op5;
+                op5=tolower(op5);
+                if(op5=='s'){
+                    for(int i=id;i<n;i++){
+                        lista[i]=lista[i+1];
+                    }
+                    n--;
+                }
+                system("pause");
                 break;
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";

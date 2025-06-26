@@ -23,7 +23,7 @@ int main(){
     char sex,val, op3;
     int edad;
     correo email;
-    contactoEmail cont, lista[100],busqueda;
+    contactoEmail cont, lista[100], busqueda;
     n = 0;
     do{
         system("cls");
@@ -31,6 +31,7 @@ int main(){
         cout<<"1. Agregar contacto"<<endl;
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Buscar y/o editar contacto"<<endl;
+        cout<<"4. Mostrar contactos por dominio"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Elige una opcion: "; cin>>op;
         switch(op){
@@ -90,7 +91,45 @@ int main(){
                     }
                     system("pause");
                     break;
-            
+            case 4: 
+            cout<<"------------Contactos con @hotmail.com:------------------ \n";
+            for(int i=0; i<n; i++){
+                int a=0;
+                if(lista[i].email.domain=="hotmail.com"){
+                    cout<<"contacto #"<<i<<endl;
+                    imprimeContacto(lista[i]);
+                    a++;                    
+                }
+                if(i==n-1&&a==0){
+                    cout<<"No hay correos con este dominio"<<endl;
+                }
+            }
+            cout<<"-----------Contactos con @gmail.com:--------------------- \n";
+            for(int i=0; i<n; i++){
+                int a=0;
+                if(lista[i].email.domain=="gmail.com"){
+                    cout<<"contacto #"<<i<<endl;
+                    imprimeContacto(lista[i]);
+                    a++;                    
+                }
+                if(i==n-1&&a==0){
+                    cout<<"No hay correos con este dominio"<<endl;
+                }
+            }
+            cout<<"-----------Contactos con otros dominios:----------------- \n";
+            for(int i=0; i<n; i++){
+                int a=0;
+                if(lista[i].email.domain!="hotmail.com"&&lista[i].email.domain!="gmail.com"){
+                    cout<<"contacto #"<<i<<endl;
+                    imprimeContacto(lista[i]);
+                    a++;                    
+                }
+                if(i==n-1&&a==0){
+                    cout<<"No hay correos con otros dominios"<<endl;
+                }
+            }
+            system("pause");
+                break;
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";
                 break;
